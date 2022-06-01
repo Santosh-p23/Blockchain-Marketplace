@@ -21,14 +21,16 @@ export const Header = () => {
     return (
         <div className={classes.container}>
             {isConnected ? (
-                <Button color="secondary" variant="contained" onClick={()=>deactivate()}>
+                <Button color="secondary" variant="contained" onClick={()=>{    console.log("deactivate")
+                                                                                deactivate()}}>
                     Disconnect
                 </Button>
             ) : (
                 <Button
                     color="primary"
                     variant="contained"
-                    onClick={() => activateBrowserWallet()}
+                    onClick={() =>{console.log("there") 
+                                    activateBrowserWallet()}}
                 >
                     Connect
                 </Button>

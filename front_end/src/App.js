@@ -35,8 +35,7 @@ function App() {
   return (
     <DAppProvider config={config}>
       <Header />
-      <Container maxWidth="md">
-        <h1>NFT Marketplace</h1>
+      <Container>
         <NFTs />
       </Container>
     </DAppProvider>

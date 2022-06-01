@@ -7,7 +7,7 @@ import networkMapping from "../chain-info/deployments/map.json"
 import  {Shop} from "./Shop"
 import {NFTForm} from "./NFTForm"
 
-import Button from '@mui/material/Button';
+import {Button, Card} from '@mui/material';
 
 export const NFTs = () => {
     // address
@@ -36,7 +36,7 @@ export const NFTs = () => {
 
         const count = await nft_contract.tokenCounter();
         // console.log(count);
-
+        setNfts([])
         for (let i=0; i< parseInt(count) ; i++){
         
         const nft = await nft_contract.getNFT(i);
@@ -95,17 +95,17 @@ export const NFTs = () => {
 
     return (
         <div>
-            <Button onClick ={()=>{
-                fetchNFT()
-            }} variant="outlined">Get NFTs</Button>
+
+            <Button variant="contained" sx={{marginRight:"-0.5rem"}} onClick ={()=>{
+                fetchNFTs()
+            }}>Get NFTs</Button>
 
             <Button onClick ={()=>{
-                setNftForm(true)
+                setNftForm(!nftForm)
             }} variant="outlined">Add NFTs</Button>
-
             {nftForm && <NFTForm nftMarketAddress ={nftMarketAddress} abi ={abi}/>}
-
-            {fetchComplete ? <Shop nfts={nfts}  nftMarketAddress ={nftMarketAddress} abi ={abi}/>:<></>}
+ 
+            <Shop nfts={nfts}  nftMarketAddress ={nftMarketAddress} abi ={abi}/>
 
         </div>
     )
